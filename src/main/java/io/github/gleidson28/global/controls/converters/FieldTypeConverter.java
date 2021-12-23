@@ -14,9 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin.textField;
+package io.github.gleidson28.global.controls.converters;
 
 import com.sun.javafx.css.StyleConverterImpl;
+import io.github.gleidson28.global.controls.types.FieldType;
+import io.github.gleidson28.global.controls.textField.TextFieldType;
 import javafx.css.ParsedValue;
 import javafx.css.StyleConverter;
 import javafx.scene.text.Font;
@@ -27,24 +29,24 @@ import java.util.logging.Logger;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  16/11/2021
  */
-public class ActionButtonTypeConverter extends StyleConverterImpl<String, ActionButtonType> {
+public class FieldTypeConverter extends StyleConverterImpl<String, FieldType> {
 
-    private ActionButtonTypeConverter() {
+    private FieldTypeConverter() {
     }
 
-    public static StyleConverter<String, ActionButtonType> getInstance() {
-        return ActionButtonTypeConverter.Holder.INSTANCE;
+    public static StyleConverter<String, FieldType> getInstance() {
+        return FieldTypeConverter.Holder.INSTANCE;
     }
 
-    public ActionButtonType convert(ParsedValue<String, ActionButtonType> value, Font notUsedFont) {
+    public FieldType convert(ParsedValue<String, FieldType> value, Font notUsedFont) {
 
         String string = (String) value.getValue();
 
         try {
-            return ActionButtonType.valueOf(string.toUpperCase());
+            return FieldType.valueOf(string.toUpperCase());
         } catch (NullPointerException | IllegalArgumentException var5) {
             Logger.getLogger(TextFieldType.class.getName()).info(String.format("Invalid button type value '%s'", string));
-            return ActionButtonType.CLEAR;
+            return FieldType.OUTLINED;
         }
     }
 
@@ -54,7 +56,7 @@ public class ActionButtonTypeConverter extends StyleConverterImpl<String, Action
 
     private static class Holder {
 
-        static final ActionButtonTypeConverter INSTANCE = new ActionButtonTypeConverter();
+        static final FieldTypeConverter INSTANCE = new FieldTypeConverter();
 
         private Holder() {
             throw new IllegalAccessError("Holder class");

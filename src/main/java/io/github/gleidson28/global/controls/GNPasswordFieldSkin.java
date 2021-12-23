@@ -14,57 +14,53 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin;
+package io.github.gleidson28.global.controls;
 
+import io.github.gleidson28.global.controls.skin.GNTextFieldSkin;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  23/11/2018
- * Version 1.0
+ * Create on  22/11/2021
  */
-public class ViewerSkin extends SkinAction {
+public class GNPasswordFieldSkin extends GNTextFieldSkin {
 
     private boolean shouldMaskText = true;
 
-    public ViewerSkin(PasswordField textField) {
+    public GNPasswordFieldSkin(PasswordField textField) {
         super(textField);
+
+//        actionButtonTypeProperty().addListener((observable, oldValue, newValue) -> {
+//            if(newValue.equals(ActionButtonType.VIEWER)) {
+//                getActionIcon().setContent(Icons.VIEWER);
+//                createViewAction();
+//            }
+//        });
+
     }
 
-    @Override
-    void mouseReleased() {
-        TextField textField = getSkinnable();
-        textField.setText(textField.getText());
-        textField.end();
-    }
+    private void createViewAction() {
+//        getActionButton().setOnMouseClicked(event -> {
+//            TextField textField = getSkinnable();
+//
+//            if(shouldMaskText) {
+//                getActionIcon().setContent(Icons.VIEWER_OFF);
+//                shouldMaskText = false;
+//            } else {
+//                getActionIcon().setContent(Icons.VIEWER);
+//                shouldMaskText = true;
+//            }
+//            textField.setText(textField.getText());
+//
+//            textField.end();
+//
+//        });
 
-    @Override
-    void textChanged() {
-        if (!getPasswordField().isFocused() && getPasswordField().getText() == null) {
-            return;
-        }
-        getButton().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
-    }
-
-    @Override
-    void focusChanged() {
-        if (!getPasswordField().isFocused() && getPasswordField().getText() == null) {
-            return;
-        }
-        getButton().setVisible(getPasswordField().isFocused() && !getPasswordField().getText().isEmpty());
-    }
-
-    @Override
-    void mousePressed() {
-        TextField textField = getSkinnable();
-        shouldMaskText = false;
-        textField.setText(textField.getText());
-        shouldMaskText = true;
     }
 
     @Override
     protected String maskText(String txt) {
+
         if (getSkinnable() instanceof PasswordField && shouldMaskText) {
             int n = txt.length();
             StringBuilder passwordBuilder = new StringBuilder(n);
@@ -73,8 +69,8 @@ public class ViewerSkin extends SkinAction {
             }
             return passwordBuilder.toString();
         } else {
+
             return txt;
         }
     }
 }
-

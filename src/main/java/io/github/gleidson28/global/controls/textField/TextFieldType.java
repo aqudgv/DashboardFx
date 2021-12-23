@@ -14,30 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin.textField;
+package io.github.gleidson28.global.controls.textField;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  16/11/2021
  */
-public enum LeadIconType {
+public enum TextFieldType {
 
 //    NONE, LEAD_ICON, TRAIL_ICON, MAX_LENGTH, COMPLEX
-//    FAVORITE, MONETARY, TRAIL_ICON, MAX_LENGTH, COMPLEX
 
-    FAVORITE,
-    MONETARY,
-    PLACE,
-    EDUCATION,
-    TIMELAPSE,
-    MAP,
-    LOCK,
-    SEARCH,
-    CONTACT;
+    NONE, MONETARY
 
-
-    @Override
-    public String toString() {
-        return super.name();
-    }
 }

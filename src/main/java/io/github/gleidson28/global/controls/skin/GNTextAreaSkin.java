@@ -44,7 +44,7 @@ import javafx.util.Duration;
  */
 public class GNTextAreaSkin extends TextAreaSkin {
 
-    private GNTextArea textArea = null;
+    private GNTextArea textArea;
 
     private final Label prompt = new Label();
     private final Timeline animation = new Timeline();
@@ -87,10 +87,6 @@ public class GNTextAreaSkin extends TextAreaSkin {
             caretPath.setVisible(true);
 
         });
-
-//        Text group = (Text) region.getChildrenUnmodifiable().get(0);
-//        System.out.println(group);
-
     }
 
 

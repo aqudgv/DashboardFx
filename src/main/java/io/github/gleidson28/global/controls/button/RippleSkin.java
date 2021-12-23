@@ -14,21 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin.button;
+package io.github.gleidson28.global.controls.button;
 
 import com.sun.javafx.css.converters.PaintConverter;
-import com.sun.javafx.scene.control.skin.ButtonSkin;
+import io.github.gleidson28.global.controls.GNButtonSKin;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.BooleanPropertyBase;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.css.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.SkinBase;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -43,31 +38,8 @@ import java.util.List;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  14/12/2018
  */
-public class RippleSkin extends ButtonSkin {
+public class RippleSkin extends GNButtonSKin {
 
-    private Paint firstColor;
-
-    private final ObjectProperty<Duration> velocity =
-            new SimpleObjectProperty<>(this, "velocity",
-            Duration.millis(200)
-    );
-
-    private static final PseudoClass ANIMATED_PSEUDO_CLASS =
-            PseudoClass.getPseudoClass("animated");
-
-    private final BooleanProperty animated = new BooleanPropertyBase(false) {
-        public void invalidated() {
-            pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, get());
-        }
-
-        @Override public Object getBean() {
-            return RippleSkin.this;
-        }
-
-        @Override public String getName() {
-            return "animated";
-        }
-    };
 
     private StyleableObjectProperty<Paint> rippleFill;
     private StyleableObjectProperty<Number> rippleOpacity;
@@ -79,7 +51,7 @@ public class RippleSkin extends ButtonSkin {
 
         Timeline timeEntered = new Timeline();
 
-        pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, animated.get());
+        setAnimated(true);
 
         Rectangle clip = new Rectangle();
         clip.setArcWidth(0);
@@ -89,15 +61,20 @@ public class RippleSkin extends ButtonSkin {
         clip.widthProperty().bind(getSkinnable().widthProperty());
         clip.heightProperty().bind(getSkinnable().heightProperty());
 
+        getSkinnable().setOnMouseEntered(null);
+        getSkinnable().setOnMouseExited(null);
+
         getSkinnable().setOnMouseClicked(event -> {
 
             if (timeEntered.getStatus() == Animation.Status.RUNNING) {
                 return;
             }
 
-            pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, true);
+            setAnimated(true);
             Circle circle = new Circle();
             circle.setRadius(0);
+
+            circle.setFill(Color.RED);
 
             circle.setFill(rippleFill.get());
 
@@ -119,7 +96,7 @@ public class RippleSkin extends ButtonSkin {
             timeEntered.play();
 
             timeEntered.setOnFinished( e -> {
-                pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, false);
+                setAnimated(false);
                 getChildren().removeAll(circle);
             });
 
@@ -169,7 +146,7 @@ public class RippleSkin extends ButtonSkin {
 
     static  {
         final List<CssMetaData<? extends Styleable, ?>> styleables =
-                new ArrayList<>(SkinBase.getClassCssMetaData());
+                new ArrayList<>(GNButtonSKin.getClassCssMetaData());
         styleables.add(RIPPLE_FILL);
         STYLEABLES = Collections.unmodifiableList(styleables);
     }

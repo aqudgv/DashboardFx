@@ -14,14 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin;
+package io.github.gleidson28.global.controls;
 
 import com.sun.javafx.css.converters.PaintConverter;
 import com.sun.javafx.scene.control.skin.ButtonSkin;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.BooleanPropertyBase;
 import javafx.beans.property.ObjectProperty;
@@ -29,13 +25,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.*;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.SkinBase;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
@@ -84,21 +81,16 @@ public class GNButtonSKin extends ButtonSkin {
 
         super(control);
 
-        buttonSwipe();
+        this.transitionColor = new SimpleStyleableObjectProperty<Paint>(TRANSITION_COLOR, this, "transitionColor");
+
+        transitionColorProperty().addListener((observable, oldValue, newValue) -> {
+            rect.setBackground(new Background(new BackgroundFill(newValue, CornerRadii.EMPTY, Insets.EMPTY)));
+        });
     }
 
     @Override
     protected void layoutChildren(double contentX, double contentY, double contentWidth, double contentHeight) {
         super.layoutChildren(contentX, contentY, contentWidth, contentHeight);
-        layoutInArea(
-                rect,
-                contentX - (snappedLeftInset() + rect.getBorder().getInsets().getRight()),
-                contentY - snappedTopInset() ,
-                contentWidth + (snappedRightInset() + snappedLeftInset()),
-                contentHeight + (snappedBottomInset() + snappedTopInset()) + bottomLabelPadding(),
-                0,
-                HPos.LEFT,  VPos.CENTER);
-
     }
 
     private static final CssMetaData<Button, Paint> TRANSITION_COLOR =
@@ -147,92 +139,27 @@ public class GNButtonSKin extends ButtonSkin {
         this.transitionColor.set(transitionColor);
     }
 
-
-    private void reset() {
-        getChildren().removeAll(customs);
+    public boolean isAnimated() {
+        return animated.get();
     }
 
-    private void buttonSwipe() {
-        customs.add(rect);
+    public BooleanProperty animatedProperty() {
+        return animated;
+    }
 
-        rect.setShape(null);
+    public void setAnimated(boolean animated) {
+        this.animated.set(animated);
+    }
 
-        rect.setPrefWidth(0);
-        rect.setMaxWidth(0);
+    public Duration getVelocity() {
+        return velocity.get();
+    }
 
-        rect.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        rect.setMaxHeight(Region.USE_COMPUTED_SIZE);
+    public ObjectProperty<Duration> velocityProperty() {
+        return velocity;
+    }
 
-        getChildren().add(rect);
-
-        rect.toBack();
-
-        Timeline timeEntered = new Timeline();
-        Timeline timeExited = new Timeline();
-
-        firstColor = getSkinnable().getTextFill();
-
-        getSkinnable().textFillProperty().addListener((observable, oldValue, newValue) -> {
-            if(timeEntered.getStatus() == Animation.Status.STOPPED && timeExited.getStatus() == Animation.Status.STOPPED ) {
-                firstColor = newValue;
-            }
-        });
-
-        rect.borderProperty().bind(getSkinnable().borderProperty());
-
-        pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, animated.get());
-
-        getSkinnable().setOnMouseEntered(event -> {
-            timeEntered.getKeyFrames().clear();
-
-            pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, true);
-
-
-            timeEntered.getKeyFrames().addAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(rect.prefWidthProperty(), rect.getPrefWidth())),
-                    new KeyFrame(Duration.ZERO, new KeyValue(rect.maxWidthProperty(), rect.getPrefWidth())),
-                    new KeyFrame(Duration.ZERO, new KeyValue(getSkinnable().textFillProperty(), getSkinnable().getTextFill())),
-
-                    new KeyFrame(velocity.get(), new KeyValue(rect.prefWidthProperty(), getSkinnable().getWidth())),
-                    new KeyFrame(velocity.get(), new KeyValue(rect.maxWidthProperty(), getSkinnable().getWidth()))
-//                    new KeyFrame(velocity.get(), new KeyValue(getSkinnable().textFillProperty(), ((GNButton) getSkinnable()).getTransitionText()))
-//
-            );
-
-            if (timeExited.getStatus() == Animation.Status.RUNNING){
-                timeExited.stop();
-            }
-
-            timeEntered.play();
-
-        });
-
-        getSkinnable().setOnMouseExited(event -> {
-            timeExited.getKeyFrames().clear();
-            pseudoClassStateChanged(ANIMATED_PSEUDO_CLASS, false);
-            timeExited.getKeyFrames().addAll(
-                    new KeyFrame(Duration.ZERO, new KeyValue(rect.prefWidthProperty(), rect.getPrefWidth())),
-                    new KeyFrame(Duration.ZERO, new KeyValue(rect.maxWidthProperty(), rect.getPrefWidth())),
-                    new KeyFrame(Duration.ZERO, new KeyValue(getSkinnable().textFillProperty(), getSkinnable().getTextFill())),
-
-                    new KeyFrame(velocity.get(), new KeyValue(rect.prefWidthProperty(), 0D)),
-                    new KeyFrame(velocity.get(), new KeyValue(rect.maxWidthProperty(), 0D)),
-                    new KeyFrame(velocity.get(), new KeyValue(getSkinnable().textFillProperty(), firstColor))
-
-            );
-
-            if (timeEntered.getStatus() == Animation.Status.RUNNING) {
-                timeEntered.stop();
-            }
-
-            timeExited.play();
-        });
-
-
-        this.transitionColor = new SimpleStyleableObjectProperty<Paint>(TRANSITION_COLOR, this, "transitionColor");
-
-        transitionColorProperty().addListener((observable, oldValue, newValue) -> {
-            rect.setBackground(new Background(new BackgroundFill(newValue, CornerRadii.EMPTY, Insets.EMPTY)));
-        });
+    public void setVelocity(Duration velocity) {
+        this.velocity.set(velocity);
     }
 }

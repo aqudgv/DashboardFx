@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin;
+package io.github.gleidson28.global.controls;
 
 import javafx.scene.control.TextField;
 
@@ -22,34 +22,34 @@ import javafx.scene.control.TextField;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  16/11/2021
  */
-public class SizeValidator implements ValidatorBase {
+public class LetterValidator implements ValidatorBase {
 
     private TextField textField;
     private String errorMessage;
-    private int size;
 
-    public SizeValidator(TextField textField, String errorMessage, int size) {
+    public LetterValidator(TextField textField, String errorMessage) {
         this.textField = textField;
         this.errorMessage = errorMessage;
-        this.size = size;
-
-//        textField.getProperties().putIfAbsent("validator", this);
     }
-
 
     @Override
     public boolean validate() {
 
-        GNTextFieldSkin skin = (GNTextFieldSkin) textField.getSkin();
+//        GNTextFieldSkin skin = (GNTextFieldSkin) textField.getSkin();
 
-        if(textField.getLength() > 2) {
-            skin.setErrorVisible(true);
-            skin.setErrorMessage(errorMessage);
+        if(!textField.getText().matches("[^0-9]")) {
+//            skin.setErrorVisible(true);
+//            skin.setErrorMessage(errorMessage);
             return true;
         } else {
-            skin.setErrorVisible(false);
+//            skin.setErrorVisible(false);
             return false;
         }
+    }
+
+    @Override
+    public void reset() {
+
     }
 
 }

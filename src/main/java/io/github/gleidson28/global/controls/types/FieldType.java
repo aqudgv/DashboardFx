@@ -14,15 +14,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin.textField;
+package io.github.gleidson28.global.controls.types;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  16/11/2021
+ * Create on  12/12/2021
  */
-public enum ActionButtonType {
+public enum FieldType {
 
-    CLEAR,
-    VIEWER // Only password
+    FILLED, OUTLINED;
 
 }

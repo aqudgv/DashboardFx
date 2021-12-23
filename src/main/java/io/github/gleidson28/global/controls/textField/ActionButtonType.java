@@ -14,37 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package io.github.gleidson28.global.skin;
-
-import javafx.scene.control.TextField;
+package io.github.gleidson28.global.controls.textField;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  16/11/2021
  */
-public class LetterValidator implements ValidatorBase {
+public enum ActionButtonType {
 
-    private TextField textField;
-    private String errorMessage;
 
-    public LetterValidator(TextField textField, String errorMessage) {
-        this.textField = textField;
-        this.errorMessage = errorMessage;
-    }
+    CLEAR,
+    VIEWER, // Only password
 
-    @Override
-    public boolean validate() {
-
-        GNTextFieldSkin skin = (GNTextFieldSkin) textField.getSkin();
-
-        if(!textField.getText().matches("[^0-9]")) {
-//            skin.setErrorVisible(true);
-//            skin.setErrorMessage(errorMessage);
-            return true;
-        } else {
-//            skin.setErrorVisible(false);
-            return false;
-        }
-    }
+    NONE, NULL; // If Don't need
 
 }
