@@ -1,0 +1,54 @@
+
+.gn-text-field {
+
+    -fx-font-size : 12px;
+    -fx-padding : 10px;
+
+    -gn-action-type : none;
+    -gn-float-prompt : false;
+    -gn-lead-icon : none;
+
+    -gn-max-length : -1;
+
+    -gn-visible-count : false;
+    -gn-visible-message : false;
+
+    -gn-field-type : outlined;
+}
+
+
+.gn-text-field:filled {
+      -fx-border-width : 0px 0px 1px 0px;
+      -fx-border-radius : 0px;
+      -fx-border-color : -border-color;
+}
+
+.gn-text-field > .filled-border {
+    -fx-fill : -primary-color;
+    -fx-stroke-width : 2px;
+}
+
+.gn-text-field .action-button:hover {
+    -fx-background-color : -light-gray;
+}
+
+.gn-text-area {
+    -fx-font-size : 12px;
+
+    -gn-float-prompt : false;
+    -gn-field-type : outlined;
+
+}
+
+.gn-combo-box {
+    -gn-float-prompt : true;
+}
+
+
+.gn-combo-box:editable:focused .arrow-button,
+.gn-combo-box:editable .arrow-button {
+    -fx-background-color : transparent;
+}
+
+
+
