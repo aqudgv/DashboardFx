@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import org.controlsfx.control.Rating?>
 
-<StackPane fx:id="root" alignment="TOP_LEFT" minHeight="600.0" prefHeight="885.0" prefWidth="1503.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.examples.dataTable.ViewController">
+<StackPane fx:id="root" alignment="TOP_LEFT" minHeight="600.0" prefHeight="885.0" prefWidth="1503.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.examples.dataTable.ViewController">
 
    <stylesheets>
       <URL value="@../../../theme/css/material-color.css" />

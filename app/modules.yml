@@ -1,11 +1,11 @@
 
-- !!io.github.gleidson28.global.plugin.Module
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   name : layout
   title : Layout
   directory : layout
   fxml : layout.fxml
 
-- !!io.github.gleidson28.global.plugin.Module
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   name : main
   title : Main
   directory : main
@@ -21,9 +21,19 @@
           title : Button
           directory : button
           fxml : button.fxml
+          views :
+            - name : button-skin
+              fxml : ButtonSkins.fxml
         - name : check-box
           title : Check Box
           fxml : checkbox.fxml
+        - name : text-field
+          title : Text Field
+          directory : textField
+          views :
+            - name : text-field-implement
+              title : Text Field Implement
+              fxml : TextFieldImplement.fxml
         - name : pagination
           title : Pagination
           fxml : pagination.fxml
@@ -59,17 +69,21 @@
           title: Stacked Bar Chart
           fxml: stackedBarChart.fxml
 
-- !!io.github.gleidson28.global.plugin.Module
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   name      : carousel
   title     : Carousel
   directory : custom
   fxml      : carousel.fxml
 
-- !!io.github.gleidson28.global.plugin.Module
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   name: example
   title: Examples
   directory: examples
   views:
+    - name: login
+      title: Login
+      directory : login
+      fxml: login.fxml
     - name: data_table
       title: Data Table
       directory: dataTable
@@ -89,7 +103,8 @@
                 title: Avatars Content
                 fxml: avatars_content.fxml
 
-- !!io.github.gleidson28.global.plugin.Module
+
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   title     : Utilities
   directory : utilities
   views :
@@ -100,7 +115,7 @@
       title     : Popup Creator
       fxml      : popupCreator.fxml
 
-- !!io.github.gleidson28.global.plugin.Module
+- !!io.github.gleidsonmt.dashboard.global.plugin.Module
   title : Settings
   directory : settings
   views :

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.SVGPath?>
 
-<StackPane fx:id="root" minHeight="200.0" prefHeight="372.0" prefWidth="274.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.examples.dataTable.TeamController">
+<StackPane fx:id="root" minHeight="200.0" prefHeight="372.0" prefWidth="274.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.examples.dataTable.TeamController">
    <children>
       <VBox StackPane.alignment="TOP_CENTER">
          <children>

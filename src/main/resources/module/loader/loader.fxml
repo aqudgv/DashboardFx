@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<StackPane stylesheets="@../../theme/css/material-color.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.load.LoaderController">
+<StackPane stylesheets="@../../theme/css/material-color.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.load.LoaderController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>

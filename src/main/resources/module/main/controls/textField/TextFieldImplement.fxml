@@ -37,7 +37,7 @@
                   </Label>
                   <TextFlow prefWidth="200.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text=".text-field {    &#10;&#10;&#9;-fx-skin: &quot;io.github.gleidson28.global.skin.GNTextFieldSkin&quot;;&#10;&#9;-gn-lead-icon-visible : [true | false];&#10;    &#9;-gn-action-button-visible : [true | false];&#10;    &#9;-gn-action-button-type : [clear | ..];&#10;    &#9;-gn-icon-type : [contact | ..];&#10;&#10;    &#9;-gn-max-length-visible :  [true | false];&#10;&#9;-gn-max-length : [int];&#10;}" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h4" text=".text-field {    &#10;&#10;&#9;-fx-skin: &quot;io.github.gleidson28.global.controls.skin.GNTextFieldSkin&quot;;&#10;&#9;-gn-lead-icon-visible : [true | false];&#10;    &#9;-gn-action-button-visible : [true | false];&#10;    &#9;-gn-action-button-type : [clear | ..];&#10;    &#9;-gn-icon-type : [contact | ..];&#10;&#10;    &#9;-gn-max-length-visible :  [true | false];&#10;&#9;-gn-max-length : [int];&#10;}" />
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />

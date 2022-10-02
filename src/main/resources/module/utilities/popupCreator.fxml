@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="834.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.utilities.PopupCreatorController">
+<StackPane prefHeight="834.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.utilities.PopupCreatorController">
    <children>
       <ScrollPane fitToWidth="true" hvalue="0.03" pannable="true" vvalue="0.03" StackPane.alignment="TOP_LEFT">
          <content>

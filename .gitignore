@@ -8,4 +8,5 @@ dashboard.properties
 DashboardFx.iml
 /.gradle/
 /gradle/
+/SpeedCut/
 /lib/

@@ -58,6 +58,7 @@
 
 .btn-icon-select {
     -fx-border-width : 1px;
+    -fx-border-style : solid;
 }
 
 .btn-icon-select:pressed {
@@ -74,6 +75,11 @@
 .btn-icon-select:selected {
     -fx-background-color : -dark-gray;
     -fx-background-radius : 100px;
+}
+
+.btn-icon-select:hover {
+    -fx-border-width : 1px;
+    -fx-border-radius : 100px;
 }
 
 
@@ -256,16 +262,10 @@
      -fx-fill : -text-color;
 }
 
-.table-view {
-  -fx-fixed-cell-size : 45px;
-}
+
 
 .table-view .column-header-background .nested-column-header .table-column SVGPath {
     -fx-fill : -text-color;
-}
-
-.table-view .column-header-background .nested-column-header .table-column:last-visible .label {
-
 }
 
 .table-view .virtual-flow .clipped-container .sheet .table-row-cell.table-column:last-visible
@@ -276,33 +276,6 @@
 .table-view:focused {
   -fx-border-color : transparent;
 }
-
-.table-view:constrained-resize {
-    -fx-border-color : -light-gray;
-}
-
-.table-view .table-row-cell:selected
-{
-    -fx-background-color : derive(-info, 30%);
-    -fx-border-color : -info;
-    -fx-border-width : 1px;
-}
-
-
-.table-row-cell:filled:selected .table-column .text
-{
-  -fx-fill : white;
-}
-
-.transparent-view .table-row-cell:selected,
-.transparent-view:row-selection:constrained-resize .virtual-flow .clipped-container .sheet .table-row-cell:selected .table-column .text
-{
-    -fx-background-color : -light-gray;
-    -fx-fill : -text-color;
-    -fx-text-fill : red;
-}
-
-
 
 .label-place {
   -fx-text-fill : -text-color;
@@ -977,6 +950,9 @@
 
 
 
+.data-table-pro {
+    -fx-fixed-cell-size : 58px;
+}
 
 
 
@@ -986,8 +962,26 @@
 
 
 
+.table-view:row-selection:constrained-resize:unconstrained-resize .column-header-background .show-hide-columns-button {
 
 
+
+}
+
+.table-view:row-selection:constrained-resize:unconstrained-resize .column-header-background .show-hide-columns-button .show-hide-column-image
+{
+    -fx-scale-x : 2.5;
+    -fx-scale-y : 1.0;
+    -fx-image-repeat : none;
+    -fx-shape : "M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z";
+    -fx-translate-x : -10px;
+}
+
+.table-view .column-header-background .nested-column-header .table-column:last-visible
+{
+    -fx-padding : 12px;
+
+}
 
 
 

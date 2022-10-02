@@ -9,29 +9,41 @@
 .input-filled
 
 {
-    -fx-background-color : transparent;
+    /* -fx-background-color : transparent;
     -fx-border-radius : 0px;
     -fx-border-width : 0 0 1 0;
     -fx-border-color : transparent transparent -border-color transparent;
+*/
+    -gn-field-type : filled;
 }
 
 .input-filled
 {
     -fx-border-radius : 0px;
-    -fx-border-width : 0 0 2 0;
+    -fx-border-width : 0 0 1 0;
+}
+
+.input-filled:focused {
+    -fx-border-width : 0 0 1 0;
 }
 
 .input-filled .border,
 .input-filled:hover .border,
 .input-filled:focused .border
 {
-    -fx-stroke : transparent;
+    -fx-stroke-width : 0px;
+}
+
+.input-filled:focused .prompt-text
+{
+    -fx-background-color : transparent;
 }
 
 .tf-search {
     -gn-action-type : clear;
     -gn-lead-icon : search;
 }
+
 
 .btn-flat:hover,
 .btn-flat
@@ -57,7 +69,7 @@
 }
 
 .action-clear {
-    -gn-action-type : clear;
+    -gn-clear-action : true;
 }
 
 .action-viewer {
@@ -210,7 +222,7 @@
     -prompt-fill : -grapefruit;
     -fx-border-color : -grapefruit;
     -gn-lead-icon : error;
-    -gn-error-text-visible : true;
+    -gn-visible-message : true;
 }
 
 .input-error:focused .lead-button .lead-icon {
@@ -292,19 +304,22 @@
 }
 
 .input-large {
-    -fx-pref-height : 45px;
+    -fx-min-height : 45px;
     -fx-font-size : 14px;
 }
 
 .input-small {
-    -fx-max-height : 30px;
-    -fx-pref-height : 30px;
     -fx-min-height : 30px;
     -fx-font-size : 10px;
 }
 
 .counter {
+    -gn-visible-count : true;
     -gn-max-length : 20;
+}
+
+.helper {
+    -gn-visible-message : true;
 }
 
 /************************************************************************************
@@ -375,6 +390,31 @@
 .border-danger, .tf-danger:focused {
     -fx-border-color : -danger;
 }
+/************************************************************************************
+*
+*               Padding
+*
+*************************************************************************************/
+
+.padding-1 {
+    -fx-padding : 1px;
+}
+
+.padding-5 {
+    -fx-padding : 5px;
+}
+
+.padding-10 {
+    -fx-padding : 10px;
+}
+
+.padding-20 {
+    -fx-padding : 20px;
+}
+
+.padding-t-10 {
+    -fx-padding : 10px 0px 0px 0px;
+}
 
 /************************************************************************************
 *
@@ -416,62 +456,18 @@
 *
 *************************************************************************************/
 
-.clearable-field {
-    -fx-skin: "io.github.gleidson28.global.skin.ClearableSkin";
-}
 
-.clear-field {
-    -fx-skin: "io.github.gleidson28.global.skin.ClearableSkin";
-}
-
-.viewer-field {
-    -fx-skin: "io.github.gleidson28.global.skin.ViewerSkin"; /* not work in text-field */
-}
-
-.ripple-button {
-    -fx-skin: "io.github.gleidson28.global.skin.button.RippleSkin"; /* not work in text-field */
-}
-
-.monetary-field {
-    /* -fx-skin : "io.github.gleidson28.global.skin.MonetaryFieldSkin" */
-}
-
-.monetary-field-clear {
-    -fx-skin : "io.github.gleidson28.global.skin.MonetaryClearFieldSkin"
-}
-
-.btn-alternate {
-    -fx-skin : "io.github.gleidson28.global.skin.button.AlternateSkin";
-}
-
-.btn-swipe {
-    -fx-skin : "io.github.gleidson28.global.skin.button.SwipeSkin";
-}
-
-.btn-swipe-diagonal {
-    -fx-skin : "io.github.gleidson28.global.skin.button.SwipeDiagonalSkin";
-}
-
-.btn-smoosh {
-    -fx-skin : "io.github.gleidson28.global.skin.button.SmooshSkin";
-}
-
-.btn-corner {
-    -fx-skin : "io.github.gleidson28.global.skin.button.CornerSkin";
-}
-
-.btn-centralize {
-    -fx-skin : "io.github.gleidson28.global.skin.button.CentralizeSkin";
-    -fx-background-color : red;
-}
-
-.btn-ripple {
-    -fx-skin : "io.github.gleidson28.global.skin.button.RippleSkin";
-    -gn-ripple-fill : black;
-    -gn-ripple-opacity : 0.8;
-}
 
 .ripple-button {
     -gn-ripple-fill : white;
     -gn-ripple-opacity : 0.8;
+}
+
+.deep-button {
+    -fx-padding: 8 10 10 10;
+    -fx-background-insets: 0,0 0 2 0, 0 0 2 0, 0 0 2 0;
+    -fx-background-color : derive(-base, -40%), derive(-base, -40%), derive(-base, -40%), -base;
+    -fx-background-radius : 2px;
+    -fx-border-radius : 2px;
+    -fx-font-weight : bolder;
 }

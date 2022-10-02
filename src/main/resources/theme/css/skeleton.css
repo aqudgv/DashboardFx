@@ -20,34 +20,61 @@
 *
 *************************************************************************************/
 
-
+.combo-box,
 .text-field {
-    -fx-skin: "io.github.gleidson28.global.skin.GNTextFieldSkin";
     -fx-text-fill : -text-color;
     -fx-prompt-text-fill : -prompt-fill;
-    -gn-float-prompt : false;
-    -gn-action-type : none;
-    -gn-lead-icon : none;
-    -gn-max-length : -1;
-    -fx-font-size : 12px;
-    -fx-min-height : 40px;
-    -fx-alignment : CENTER_LEFT;
+    -fx-min-height : 30px;
+    -fx-alignment : TOP_LEFT;
+    -fx-background-color : transparent;
     -fx-border-width : 0px;
-    -fx-background-color : white;
+    -fx-pref-height : 52px;
+    -fx-padding : 10px;
 }
 
-.text-field > .border {
+.text-field > .field-footer .count,
+.text-field > .field-footer .text-flow .message {
+    -fx-fill : -prompt-fill;
+}
+
+.combo-box > .border,
+.table-view > .border,
+.text-field > .border
+{
     -fx-fill : transparent;
     -fx-stroke : -light-gray-2;
     -fx-stroke-width : 1px;
 }
 
+.gn-text-field > .filled-border {
+    -fx-fill : -primary-color;
+}
+
+.text-field:filled:focused {
+    -fx-border-width : 0px 0px 1px 0px;
+}
+
+.gn-text-field:disabled .prompt-text:disabled .text,
+.text-field:disabled .prompt-text {
+    -fx-fill : black;
+}
+
+.text-field:disabled > .border {
+    -fx-fill : transparent;
+    -fx-stroke : -medium-gray-2;
+    -fx-stroke-width : 1px;
+}
+
+.table-view:hover > .border,
+.combo-box:hover > .border,
 .text-field:hover > .border {
     -fx-fill : transparent;
     -fx-stroke : -medium-gray-2;
     -fx-stroke-width : 1px;
 }
 
+.table-view:focused > .border,
+.combo-box:focused > .border,
 .text-field:focused > .border {
     -fx-fill : transparent;
     -fx-stroke : -primary-color;
@@ -76,18 +103,34 @@
 }
 
 .combo-box {
-    -fx-skin: "io.github.gleidson28.global.skin.GNComboBoxSkin";
+    /* -fx-skin: "io.github.gleidson28.global.skin.GNComboBoxSkin"; */
 }
 
 .text-area {
-    -fx-skin: "io.github.gleidson28.global.skin.GNTextAreaSkin";
     -fx-text-fill : -text-color;
-    -fx-padding : 10 0 2 4;
-    -gn-float-prompt : false;
+    -fx-font-size : 12px;
+    -fx-min-height : 40px;
+    -fx-alignment : CENTER_LEFT;
+    -fx-border-width : 0px;
+    -fx-background-color : transparent;
 }
 
-.text-area .scroll-pane .viewport .content {
-    -fx-padding : 2px;
+.text-area > .border {
+    -fx-fill : transparent;
+    -fx-stroke : -light-gray-2;
+    -fx-stroke-width : 1px;
+}
+
+.text-area:hover > .border {
+    -fx-fill : transparent;
+    -fx-stroke : -medium-gray-2;
+    -fx-stroke-width : 1px;
+}
+
+.text-area:focused > .border {
+    -fx-fill : transparent;
+    -fx-stroke : -primary-color;
+    -fx-stroke-width : 2px;
 }
 
 .text-area .scroll-pane .corner,
@@ -105,10 +148,12 @@
 }
 
 .text-area > .prompt-text .text,
+.combo-box > .prompt-text .text,
 .text-field > .prompt-text .text {
     -fx-fill : -prompt-fill;
 }
 
+.combo-box:float:focused > .prompt-text .text,
 .text-area:float:focused > .prompt-text .text,
 .text-field:float:focused > .prompt-text .text {
     -fx-fill : -primary-color;
@@ -130,12 +175,14 @@
     -fx-wrap-text : true;
 }
 
-.text-area > .prompt-text,
-.text-field > .prompt-text {
-    -fx-background-color : white;
+.gn-text-area > .prompt-text,
+.gn-text-field > .prompt-text {
+    -fx-background-color : transparent;
 }
 
-.text-field:float > .prompt-text {
+.gn-text-field:float > .prompt-text,
+.gn-combo-box:float > .prompt-text,
+.gn-text-area:float > .prompt-text {
     -fx-background-color : white;
 }
 
@@ -156,7 +203,7 @@
 .text-field, .password-field, .combo-box, .choice-box,
 .menu-button, .split-menu-button, .split-menu-button .label, .spinner
 {
-    -fx-pref-height : 40;
+    -fx-pref-height : 45;
     -fx-background-color : transparent;
     -fx-border-color : -border-color;
     -fx-effect : none;
@@ -197,7 +244,7 @@
 
 .text-field:float > .prompt
 {
-    -fx-background-color : red;
+    -fx-background-color : -background-color;
 }
 
 .text-field > .prompt  {
@@ -632,36 +679,60 @@
     -fx-text-fill: white;
 }
 
-
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell
+.combo-box, .split-menu-button
 {
-    -fx-background-color : -list-fill;
-    -fx-padding: 8;
+    -fx-padding : 5px;
 }
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover{
-    -fx-text-fill: white;
-     -fx-background-color: -primary-color;
+.combo-box-popup {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 18, 0 , 0 , 10 );
+    -fx-border-color : -light-gray-2;
+    -fx-border-radius : 5px;
+    -fx-background-radius : 5px;
+    -fx-border-width : 1px;
+    -fx-font-family : Roboto;
 }
 
-.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:selected{
+> .list-view > .virtual-flow > .clipped-container > .sheet,
+.combo-box-popup > .list-view {
+    -fx-border-width : 0px;
+    -fx-background-color : -light-gray-2;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:odd
+{
+    -fx-padding : 15px;
+    -fx-text-fill : -text-color;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled .text,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:odd .text
+{
+    -fx-fill : -text-color;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:filled:hover .text,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:odd:hover .text
+{
+    -fx-fill : white;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover,
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover:selected
+{
+    -fx-background-color: -primary-color;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected {
     -fx-background-color: -light-gray;
     -fx-text-fill: -text-color;
 }
 
-.combo-box .list-cell:filled:selected .text
+.combo-box .list-cell:selected .text
 {
-  /* -fx-fill : -text-color; */
+   -fx-fill : -text-color;
 }
-
-.combo-box .list-view{
-  -fx-background-color : white;
-  -fx-border-color : -focused-border;
-  -fx-effect: dropshadow( gaussian , rgba(0,0,0,.2) , 18, 0 , 0 , 10 );
-    -fx-background-radius : 5px;
-    -fx-border-radius : 5px;
-}
-
 
 
 .combo-box-primary-color,
@@ -673,6 +744,22 @@
 
 .combo-box:disabled {
     -fx-opacity: .4;
+}
+
+.separator {
+    -fx-background-color : -light-gray-2;
+    -fx-padding : 1px;
+    -fx-max-height : 1px;
+    -fx-pref-height : 1px;
+    -fx-min-height : 1px;
+}
+
+.separator:horizontal .line
+{
+    -fx-background-color : -light-gray-2;
+    -fx-effect : none;
+    -fx-border-color : -light-gray-2;
+    -fx-border-width : 0px;
 }
 
 /*******************************************************************************
@@ -768,3 +855,252 @@
 .tab-pane:top .tab-header-area .tab-header-background {
     -fx-background-color : transparent;
 }
+
+
+/*******************************************************************************
+*                                                                              *
+*       @TableView
+*                                                                              *
+*******************************************************************************/
+
+.table-view {
+  -fx-fixed-cell-size : 45px;
+}
+
+.table-view:constrained-resize:focused {
+    -fx-border-color : -border-color;
+}
+
+.table-view:constrained-resize {
+    -fx-border-color : -border-color;
+}
+
+.table-view .column-header-background .nested-column-header .table-column,
+.table-view .column-header-background,
+.tree-table-view .column-header-background
+{
+
+  -fx-padding : 10px 2px 10px 2px;
+  -fx-background-color : transparent;
+}
+
+.table-view .column-header-background .filler,
+.tree-table-view .column-header-background .filler,
+.table-view .column-header-background .show-hide-columns-button,
+.tree-table-view .column-header-background .nested-column-header .table-column
+{
+    -fx-background-color : transparent;
+}
+
+.table-view,
+.tree-table-view
+{
+  -fx-font-family : Roboto;
+  -fx-faint-focus-color : transparent;
+  -fx-focus-color : transparent;
+  -fx-background-color : transparent;
+}
+
+.tree-table-view:focused,
+.table-view:focused
+{
+  -fx-border-color : transparent;
+}
+
+
+.table-row-cell:filled:even
+{
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+}
+
+
+.table-row-cell:filled:odd
+{
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled:selected .table-column .text,
+.table-row-cell:filled:selected:focused
+{
+  /* -fx-background-color : derive(-light-gray, 20%); */
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled:selected .table-column .button .text {
+    -fx-fill : -text-color;
+}
+
+.table-row-cell:filled:selected .table-column .text
+{
+  -fx-fill : -inner-text;
+}
+
+.table-row-cell:filled .table-column .text
+{
+  -fx-fill : -text-color;
+}
+
+.table-row-cell
+{
+  -fx-text-color : -text-color;
+  /* -fx-background-color : derive(-light-gray, 20%); */
+  -fx-background-color : transparent;
+  -fx-border-color : transparent;
+}
+
+.table-row-cell:filled .hyperlink .text {
+    -fx-fill : -base;
+}
+
+.table-row-cell:filled:hover .tooltip .text
+{
+  -fx-fill : white;
+}
+
+
+.table-cell
+{
+  -fx-alignment : center_left;
+  -fx-border-color : transparent;
+  -fx-padding : 2px;
+}
+
+.table-view .table-row-cell:selected
+{
+    -fx-background-color : derive(-primary-color, 10%), transparent;
+    -fx-background-color : linear-gradient(to left, derive(-primary-color, -5%), -primary-color);
+    -fx-border-color : -primary-color;
+
+}
+
+.table-row-cell:filled:selected .table-column .text
+{
+  -fx-fill : white;
+}
+
+.table-row-cell
+{
+  -fx-background-insets : 0px;
+  -fx-padding : -1px -1px -1px -1px;
+}
+
+.table-view .virtual-flow .clipped-container .sheet .table-row-cell .table-column
+{
+    -fx-padding : 8px;
+}
+
+.table-view .column-header-background .nested-column-header .table-column ,
+.table-view .column-header-background .nested-column-header .table-column .label ,
+.tree-table-view .column-header-background .nested-column-header .table-column .label
+{
+  -fx-padding : 10px 4px 10px 4px;
+  -fx-alignment : center_left;
+
+}
+
+.table-view .column-header-background .nested-column-header .table-column .label .text
+{
+  -fx-fill : -text-color;
+  -fx-font-weight : bold;
+  -fx-font-family : Roboto Bold;
+}
+
+.table-row-cell:filled:hover
+{
+    -fx-background-color : -light-gray;
+}
+
+.table-view:row-selection:constrained-resize .virtual-flow {
+    -fx-padding : 10px;
+}
+
+.table-view:focused .column-header-background,
+.tree-table-view:focused .column-header-background
+{
+  -fx-border-color : -primary-color;
+  -fx-border-width : 0;
+}
+
+.table-view .column-header-background,
+.tree-table-view .column-header-background
+{
+  -fx-border-color : -box-fill;
+  -fx-border-width : 0px 0px 1px 0px;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.tree-table-view .virtual-flow .scroll-bar:vertical
+{
+  -fx-translate-y : 1px;
+  -fx-padding : 0px;
+  -fx-background-insets : 2px;
+}
+
+.tree-cell .tree-disclosure-node .arrow,
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .tree-disclosure-node .arrow
+{
+  -fx-background-color : -icon-color;
+  -fx-shape: "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:selected .tree-disclosure-node .arrow
+{
+    -fx-background-color : white;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:selected .table-column:filled .text
+{
+  -fx-fill : white;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell:filled .table-column:filled .text
+{
+   -fx-fill : -text-color;
+}
+
+.tree-table-view .virtual-flow .clipped-container .sheet .tree-table-row-cell .table-column
+{
+    -fx-border-color : transparent;
+}
+
+.tree-table-view .column-header-background .nested-column-header .table-column .label .text
+{
+  -fx-fill : -text-color;
+}
+
+.table-column .arrow
+{
+  -fx-background-color : -icon-color;
+  -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
+}
+
+.tree-view
+{
+  -fx-border-color : -box-fill;
+  -fx-background-color : transparent;
+}
+
+.tree-view .virtual-flow .clipped-container,
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell
+{
+  -fx-background-color : transparent;
+}
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:focused:filled .tree-disclosure-node .arrow
+{
+  -fx-background-color : white;
+}
+
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled
+{
+  -fx-text-fill : -text-color;
+}
+
+.tree-view .virtual-flow .clipped-container .sheet .tree-cell:filled:selected
+{
+  -fx-text-fill : white;
+}
+

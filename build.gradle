@@ -7,7 +7,7 @@ mainClassName = 'Start'
 
 compileJava.options.encoding = "UTF-8"
 
-group 'io.github.gleidson28'
+group 'io.github.gleidsonmt'
 version '2.2.1'
 
 repositories {
@@ -19,7 +19,7 @@ sourceCompatibility = '1.8'
 jar {
     manifest {
         attributes(
-                'Main-Class': 'io.github.gleidson28.Start'
+                'Main-Class': 'Start'
         )
     }
     from {
@@ -28,9 +28,9 @@ jar {
 }
 
 dependencies {
-    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'org.jetbrains:annotations:22.0.0'
 
-    compile group: 'org.yaml', name: 'snakeyaml', version: '1.26'
+    implementation 'org.yaml:snakeyaml:1.29'
     compile 'io.github.typhon0:AnimateFX:1.2.1'
 
     compile 'io.github.Gleidson28:GNAvatarView:1.0.5'
@@ -48,11 +48,10 @@ dependencies {
     implementation files('vendor/jfoenix-8.0.7.jar')
     implementation files('vendor/GNCarousel-2.1.51.jar')
     implementation files('vendor/colors-1.4.jar')
+    implementation files('vendor/demo-1.0.jar')
 
     implementation files('vendor/TrayNotification.jar')
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {

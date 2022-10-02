@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<StackPane prefHeight="742.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.controls.LayoutController">
+<StackPane prefHeight="742.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.controls.LayoutController">
    <stylesheets>
       <URL value="@../../../theme/css/material-color.css" />
       <URL value="@../../../theme/css/skeleton.css" />
@@ -32,7 +32,7 @@
    <children>
       <BorderPane fx:id="body" prefHeight="200.0" prefWidth="200.0" StackPane.alignment="CENTER">
          <center>
-            <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-border-width: 0 0 0 1;" styleClass="border" BorderPane.alignment="CENTER">
+            <VBox prefHeight="433.0" prefWidth="772.0" spacing="10.0" style="-fx-border-width: 0;" styleClass="border" BorderPane.alignment="CENTER">
                <children>
                   <VBox fx:id="header">
                      <children>

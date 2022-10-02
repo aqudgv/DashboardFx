@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.gleidson28.GNAvatarView?>
+<?import io.github.gleidsonmt.dashboard.global.controls.control.GNTextArea?>
+<?import io.github.gleidsonmt.dashboard.global.controls.control.GNTextField?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -10,8 +12,6 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
@@ -28,21 +28,12 @@
 <?import javafx.scene.text.TextFlow?>
 <?import org.controlsfx.control.Rating?>
 
-<StackPane fx:id="root" prefHeight="712.0" prefWidth="958.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.examples.dataTable.RegisterController">
-    <stylesheets>
-        <URL value="@../../../theme/css/material-color.css" />
-        <URL value="@../../../theme/css/skeleton.css" />
-       <URL value="@../../../theme/css/bootstrap.css" />
-<!--       <URL value="@../../../theme/css/light.css" />-->
-        <URL value="@../../../theme/css/shape.css" />
-        <URL value="@../../../theme/css/typographic.css" />
-        <URL value="@../../../theme/css/helpers.css" />
-        <URL value="@../../../theme/css/master.css" />
-    </stylesheets>
+<StackPane fx:id="root" prefHeight="712.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.examples.dataTable.RegisterController">
+
     <children>
       <ScrollPane fitToHeight="true" fitToWidth="true" StackPane.alignment="TOP_LEFT">
          <content>
-            <BorderPane fx:id="content">
+            <BorderPane fx:id="content" style="-fx-background-color: white;">
                <center>
                   <HBox fx:id="formBox" alignment="CENTER">
                      <children>
@@ -61,32 +52,19 @@
                                        <children>
                                           <VBox fx:id="firstColumn" minHeight="295.0" spacing="30.0">
                                              <children>
-                                                <TextField fx:id="tfName" minHeight="40.0" promptText="Name">
-                                                   <styleClass>
-                                                      <String fx:value="float" />
-                                                      <String fx:value="lead-icon" />
-                                                      <String fx:value="lead-contact" />
-                                                   </styleClass>
-                                                </TextField>
-                                                <TextField fx:id="tfPrice" minHeight="40.0" promptText="Price" style="-fx-border-color: red;">
-                                                   <styleClass>
-                                                      <String fx:value="float" />
-                                                      <String fx:value="lead-monetary" />
-                                                   </styleClass></TextField>
-                                                <TextField minHeight="40.0" promptText="Education" />
-                                                <TextField minHeight="40.0" promptText="Geographic Preferences:" />
+                                                <GNTextField fx:id="tfName" floatPrompt="true" leadIconType="CONTACT" promptText="First Name" />
+                                                <GNTextField fx:id="tfPrice" floatPrompt="true" layoutX="10.0" layoutY="150.0" leadIconType="MONETARY" promptText="Price" />
+                                                <GNTextField floatPrompt="true" leadIconType="PLACE" promptText="Localisation" />
+                                                <GNTextField floatPrompt="true" layoutX="10.0" layoutY="150.0" leadIconType="EDUCATION" promptText="Education" />
+                                                <GNTextField layoutX="10.0" layoutY="220.0" promptText="Geographic Preferences:" />
                                              </children>
                                           </VBox>
                                           <VBox fx:id="secondColumn" minHeight="295.0" spacing="30.0" GridPane.columnIndex="1">
                                              <children>
-                                                <TextField fx:id="tfLastName" minHeight="40.0" promptText="Last Name">
-                                                   <styleClass>
-                                                      <String fx:value="float" />
-                                                      <String fx:value="lead-contact" />
-                                                   </styleClass></TextField>
-                                                <TextField minHeight="40.0" promptText="Location" styleClass="float" />
-                                                <TextField minHeight="40.0" promptText="Years Of Experience:" />
-                                                <TextField minHeight="40.0" promptText="Specialization:" />
+                                                <GNTextField fx:id="tfLastName" floatPrompt="true" layoutX="10.0" layoutY="80.0" leadIconType="CONTACT" promptText="Last Name" />
+                                                <GNTextField floatPrompt="true" layoutX="10.0" layoutY="150.0" leadIconType="MAP" promptText="Location" />
+                                                <GNTextField floatPrompt="true" leadIconType="TIMELAPSE" promptText="Years Of Experience:" />
+                                                <GNTextField floatPrompt="true" layoutX="10.0" layoutY="150.0" promptText="Specialization:" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -96,7 +74,8 @@
                               <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" VBox.vgrow="ALWAYS">
                                  <children>
                                     <Label styleClass="label-place" text="Notes:" />
-                                    <TextArea minHeight="80.0" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                                    <Separator prefWidth="200.0" />
+                                    <GNTextArea floatPrompt="true" minHeight="80.0" minWidth="0.0" prefHeight="256.0" prefWidth="686.0" promptText="Write Your Note" scrollLeft="100.0" scrollTop="50.0" wrapText="true" VBox.vgrow="ALWAYS" />
                                     <HBox alignment="BOTTOM_LEFT" minHeight="50.0" prefHeight="59.0" prefWidth="772.0" spacing="5.0" style="-fx-border-color: -light-gray;">
                                        <children>
                                           <Button fx:id="btnBack" layoutX="228.0" layoutY="10.0" minHeight="40.0" mnemonicParsing="false" onAction="#back" prefWidth="112.0" text="Retornar">
@@ -139,10 +118,8 @@
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
                                     <StackPane visible="false">
-                                       <children>
-                                          <Circle fill="#ffffff00" radius="100.0" stroke="#0000001b" strokeType="INSIDE" style="-fx-stroke-dash-array: 10; -fx-stroke-miter-limit: 20;" />
-                                          <Label style="-fx-text-fill: -text-color; -fx-font-weight: bold;" text="Select Avatar" />
-                                       </children>
+                                       <Circle fill="#ffffff00" radius="100.0" stroke="#0000001b" strokeType="INSIDE" style="-fx-stroke-dash-array: 10; -fx-stroke-miter-limit: 20;" />
+                                       <Label style="-fx-text-fill: -text-color; -fx-font-weight: bold;" text="Select Avatar" />
                                     </StackPane>
                                  </children>
                               </VBox>
@@ -173,9 +150,7 @@
                                        </rowConstraints>
                                        <children>
                                           <TextFlow>
-                                             <children>
-                                                <Text fx:id="teamsText" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" styleClass="h5" text="Dream, Teams, Creative" textAlignment="CENTER" />
-                                             </children>
+                                             <Text fx:id="teamsText" opacity="0.7" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" styleClass="h5" text="Dream, Teams, Creative" textAlignment="CENTER" />
                                           </TextFlow>
                                           <Button fx:id="btnTeams" contentDisplay="GRAPHIC_ONLY" graphicTextGap="10.0" mnemonicParsing="false" onMouseClicked="#openTeamPopup" prefHeight="41.0" prefWidth="40.0" style="-fx-min-height: -1; -fx-max-height: -1;" styleClass="btn-flat" text="Gas" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                                              <graphic>
@@ -300,4 +275,15 @@
          </content>
       </ScrollPane>
     </children>
+   <stylesheets>
+      <URL value="@../../../theme/css/material-color.css" />
+      <URL value="@../../../theme/css/skeleton.css" />
+      <URL value="@../../../theme/css/bootstrap.css" />
+      <!--       <URL value="@../../../theme/css/light.css" />-->
+      <URL value="@../../../theme/css/shape.css" />
+      <URL value="@../../../theme/css/typographic.css" />
+      <URL value="@../../../theme/css/helpers.css" />
+      <URL value="@../../../theme/css/master.css" />
+      <URL value="@../../../theme/css/light.css" />
+   </stylesheets>
 </StackPane>

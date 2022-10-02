@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.gleidson28.GNAvatarView?>
+<?import io.github.gleidsonmt.dashboard.global.controls.control.GNTextField?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -8,7 +9,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.SVGPath?>
 
-<VBox id="drawer" minWidth="250.0" prefHeight="979.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidson28.module.layout.DrawerNavigate">
+<VBox id="drawer" minWidth="250.0" prefHeight="979.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.gleidsonmt.dashboard.module.layout.DrawerNavigate">
    <styleClass>
       <String fx:value="border" />
       <String fx:value="border-r-1" />
@@ -83,13 +83,9 @@
             <String fx:value="border" />
          </styleClass>
       </VBox>
-      <HBox id="search-box" fx:id="searchBox" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="247.0">
+      <HBox id="search-box" fx:id="searchBox" alignment="CENTER" focusTraversable="true" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="49.0" prefWidth="249.0">
          <children>
-            <TextField id="search" fx:id="search" minHeight="-Infinity" prefHeight="38.0" prefWidth="358.0" promptText="Search..">
-               <styleClass>
-                  <String fx:value="tf-search" />
-                  <String fx:value="filled" />
-               </styleClass></TextField>
+            <GNTextField fx:id="search" clearAction="true" fieldType="FILLED" leadIconType="SEARCH" message="" prefHeight="52.0" prefWidth="239.0" promptText="Search" style="-fx-border-width: 0px; -fx-border-color: red;" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -153,6 +149,11 @@
                            <content>
                               <VBox>
                                  <children>
+                                    <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" onAction="#gotTableView" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="TableView">
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="team32" />
+                                       </toggleGroup>
+                                    </ToggleButton>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#goTextArea" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="TextArea">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="team31" />
@@ -230,17 +231,17 @@
                                  <children>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#goAreaChart" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="AreaChart">
                                        <toggleGroup>
-                                          <ToggleGroup fx:id="team21" />
+                                          <ToggleGroup  />
                                        </toggleGroup>
                                     </ToggleButton>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#goBarChart" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="Bar Chart">
                                        <toggleGroup>
-                                          <ToggleGroup fx:id="team211" />
+                                          <ToggleGroup  />
                                        </toggleGroup>
                                     </ToggleButton>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="70.0" mnemonicParsing="false" onAction="#goBubbleChart" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="Bubble Chart">
                                        <toggleGroup>
-                                          <ToggleGroup fx:id="team2111" />
+                                          <ToggleGroup />
                                        </toggleGroup>
                                     </ToggleButton>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="120.0" mnemonicParsing="false" onAction="#goLineChart" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="Line Chart">
@@ -285,7 +286,7 @@
                                  <children>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#goCarousel" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="Carousel">
                                        <toggleGroup>
-                                          <ToggleGroup fx:id="team2" />
+                                          <ToggleGroup  />
                                        </toggleGroup>
                                     </ToggleButton>
                                     <ToggleButton alignment="BASELINE_LEFT" contentDisplay="RIGHT" graphicTextGap="15.0" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#goCheckBox" prefHeight="50.0" prefWidth="295.0" styleClass="drawer-item" text="Check Box">
