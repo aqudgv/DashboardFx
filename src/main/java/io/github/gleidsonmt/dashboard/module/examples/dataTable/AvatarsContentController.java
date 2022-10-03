@@ -38,7 +38,8 @@ import java.util.ResourceBundle;
  */
 public class AvatarsContentController implements Initializable {
 
-    @FXML private ToggleGroup group;
+    @FXML
+    private ToggleGroup group;
 
     private FileChooser fileChooser;
     private RegisterController registerController;
