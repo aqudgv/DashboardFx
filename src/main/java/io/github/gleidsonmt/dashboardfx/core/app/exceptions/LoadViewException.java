@@ -14,14 +14,31 @@
  *    You should have received a copy of the GNU General Public License
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-package io.github.gleidsonmt.dashboardfx.core.app.services;
+package io.github.gleidsonmt.dashboardfx.core.app.exceptions;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  04/10/2022
+ * Create on  31/03/2020
  */
-public class LoadView {
+public final class LoadViewException extends Exception {
 
+    private String code;
 
+    public LoadViewException(String code, String message) {
+        super(message);
+        this.setCode(code);
+    }
+
+    public LoadViewException(String code, String message, Throwable cause) {
+        super(message, cause);
+        this.setCode(code);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    private void setCode(String code) {
+        this.code = code;
+    }
 }

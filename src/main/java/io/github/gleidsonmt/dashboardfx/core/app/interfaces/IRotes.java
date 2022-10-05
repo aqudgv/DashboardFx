@@ -17,14 +17,31 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  20/08/2022
  */
-public interface PathView {
+public interface IRotes {
 
-    String getFromCore(String fileOrPath);
+    void setContent(String view) throws NavigationException;
 
-    String getViews();
+    void setView(String view) throws NavigationException;
+
+    void addView(IView iView);
+
+    void goHome();
+
+    IView getView(String view);
+
+    IView getCurrent();
+
+    IView getPrevious();
+
+    IView load(String folder, String title, String name);
+
+
+    // void loadView(String path) // para implementar se quiser q a view seja carregad na hora
 
 }

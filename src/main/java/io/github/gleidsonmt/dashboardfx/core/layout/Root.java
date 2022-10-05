@@ -17,22 +17,45 @@
 
 package io.github.gleidsonmt.dashboardfx.core.layout;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IRoot;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  04/10/2022
  */
-public final class  Root extends StackPane {
+public final class Root extends StackPane implements IRoot {
+
+    private SnackBar snackBar;
+    private final Layout layout;
 
     public Root() {
-        setBackground(new Background(
-                new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)
-        ));
+
+        layout = new Layout();
+        getChildren().setAll(layout);
+
+        setId("root");
+
     }
+
+    @Override
+    public void setTitle(String title) {
+
+    }
+
+    @Override
+    public SnackBar createSnackBar() {
+        if (snackBar == null) snackBar = new SnackBar(this);
+        return snackBar;
+    }
+
+    @Override
+    public void setContent(Parent content) {
+
+        layout.setBody(content);
+    }
+
+
 }

@@ -17,14 +17,35 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.scene.Parent;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  20/08/2022
  */
-public interface PathView {
 
-    String getFromCore(String fileOrPath);
+@SuppressWarnings("all")
+public interface IRoot {
 
-    String getViews();
+    void setTitle(String title);
 
+    SnackBar createSnackBar();
+
+    void setContent(Parent content);
+
+
+//    IWrapper getWrapper();
+//
+//    ILayout getLayout();
+//
+//
+//    double getWidth();
+//
+//    double getHeight();
+//
+//    ReadOnlyDoubleProperty widthProperty();
+//
+//    ReadOnlyDoubleProperty heightProperty();
+//
 }

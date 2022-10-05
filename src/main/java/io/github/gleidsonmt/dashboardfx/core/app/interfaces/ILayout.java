@@ -17,14 +17,22 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
 
+import javafx.scene.Node;
+
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  04/10/2022
  */
-public interface PathView {
+public interface ILayout {
 
-    String getFromCore(String fileOrPath);
+    void setDrawer(IView iView);
 
-    String getViews();
+    void setAside(IView iView);
+
+    void setNav(IView iView);
+
+    void setFooter(IView iView);
+
+    void setBody(Node iView);
 
 }

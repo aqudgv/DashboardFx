@@ -15,16 +15,48 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+package io.github.gleidsonmt.dashboardfx.core.layout;
+
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ILayout;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IView;
+import javafx.scene.Node;
+import javafx.scene.layout.BorderPane;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  04/10/2022
  */
-public interface PathView {
+public final class Layout extends BorderPane implements ILayout {
 
-    String getFromCore(String fileOrPath);
+    public Layout() {
 
-    String getViews();
+        setId("layout");
 
+
+    }
+
+    @Override
+    public void setDrawer(IView iView) {
+
+    }
+
+    @Override
+    public void setAside(IView iView) {
+
+    }
+
+    @Override
+    public void setNav(IView iView) {
+
+    }
+
+    @Override
+    public void setFooter(IView iView) {
+
+    }
+
+    @Override
+    public void setBody(Node iView) {
+        setCenter(iView);
+    }
 }

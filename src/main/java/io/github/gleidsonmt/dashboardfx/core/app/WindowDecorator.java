@@ -17,8 +17,11 @@
 
 package io.github.gleidsonmt.dashboardfx.core.app;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.IDecorator;
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.PathView;
+import io.github.gleidsonmt.dashboardfx.core.app.controllers.LoaderController;
+import io.github.gleidsonmt.dashboardfx.core.app.exceptions.NavigationException;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.*;
+import io.github.gleidsonmt.dashboardfx.core.app.services.LoadViews;
+import io.github.gleidsonmt.dashboardfx.core.layout.Root;
 import io.github.gleidsonmt.gncontrols.Material;
 import io.github.gleidsonmt.gncontrols.Theme;
 import io.github.gleidsonmt.gndecorator.GNDecorator;
@@ -28,7 +31,6 @@ import javafx.scene.Parent;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -38,23 +40,24 @@ import java.util.logging.Logger;
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
  * Create on  03/10/2022
  */
-public class WindowDecorator extends GNDecorator implements IDecorator {
+public final class WindowDecorator extends GNDecorator implements IDecorator, Context {
 
-    private PathView pathView;
+    private final PathView pathView;
+    private LoaderController loaderController;
+
+    private IRotes routes;
+    private final IRoot root;
 
     public WindowDecorator(@NotNull Properties _properties, @NotNull PathView _path) throws IOException {
         // setTheme and logo here
-
-
-        // Theming by controls lib
-        new Material(
-                this.getWindow().getScene(),
-                Theme.SIMPLE_INFO
-        );
-
         this.pathView = _path;
 
-        fullBody();
+        root = new Root();
+
+        // Theming by controls lib
+        new Material(this.getWindow().getScene(), Theme.SIMPLE_INFO);
+
+//        fullBody();
 
         // Getting default parameters for window
         setWidth(Integer.parseInt(_properties.getProperty("app.width")));
@@ -62,25 +65,84 @@ public class WindowDecorator extends GNDecorator implements IDecorator {
 
         setMinWidth(Integer.parseInt(_properties.getProperty("app.min.width")));
         setMinHeight(Integer.parseInt(_properties.getProperty("app.min.height")));
+
+    }
+
+    @Override
+    public IRoot getRoot() {
+        return root;
     }
 
     @Override
     public void show(HostServices hostServices) {
+
         initPreLoader();
+
+        LoadViews loadViews = new LoadViews();
+
+        loadViews.setOnReady(event -> {
+
+            loaderController.info("Reading application..");
+
+        });
+
+        loadViews.setOnFailed(event -> {
+
+            Logger.getLogger("app").severe("Error on loading preloader");
+
+        });
+
+        loadViews.setOnCancelled(event -> {
+            Logger.getLogger("app").severe("Error on loading preloader");
+        });
+
+        loadViews.setOnRunning(event -> {
+            loaderController.info("Reading application..");
+        });
+
+        loadViews.setOnSucceeded(event -> {
+            initLayout();
+
+            try {
+                context.getRoutes().setContent("dash");
+            } catch (NavigationException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+        loadViews.start();
         show();
+
+//        ScenicView.show(this.getWindow().getScene());
+
     }
 
 
     private void initPreLoader() {
+
         try {
+
             Logger.getLogger("app").info("Intializing Pre Loader Application");
-            Parent loader = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(pathView.getFromCore("/loader.fxml"))));
-            setContent(loader);
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(pathView.getFromCore("/loader.fxml")));
+            loader.load();
+
+            loaderController = loader.getController();
+
+            setContent(loader.getRoot());
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
+    private void initLayout() {
+
+        setContent((Parent) root);
+
+    }
 
 }

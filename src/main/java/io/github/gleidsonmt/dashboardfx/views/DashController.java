@@ -15,16 +15,41 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package io.github.gleidsonmt.dashboardfx.core.app.interfaces;
+package io.github.gleidsonmt.dashboardfx.views;
+
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackBar;
+import javafx.fxml.FXML;
 
 /**
  * @author Gleidson Neves da Silveira | gleidisonmt@gmail.com
- * Create on  03/10/2022
+ * Create on  04/10/2022
  */
-public interface PathView {
+public final class DashController implements ActionView, Context {
 
-    String getFromCore(String fileOrPath);
 
-    String getViews();
+    @FXML
+    private void bottonClick() {
 
+        context.getDecorator()
+                .getRoot()
+                .createSnackBar()
+                .message("My Message")
+                .color(SnackBar.Colors.SUCCESS)
+                .show();
+
+        System.out.println("button clicked");
+
+    }
+
+    @Override
+    public void onEnter() {
+
+    }
+
+    @Override
+    public void onExit() {
+
+    }
 }
