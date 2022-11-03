@@ -129,7 +129,7 @@ public final class WindowDecorator extends GNDecorator implements IDecorator, Co
 
         try {
 
-            Logger.getLogger("app").info("Intializing Pre Loader Application");
+            Logger.getLogger("app").info("Initializing Pre Loader Application");
 
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/core.app/loader.fxml"));

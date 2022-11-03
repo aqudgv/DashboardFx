@@ -17,8 +17,9 @@
 
 package io.github.gleidsonmt.dashboardfx.controllers;
 
-import io.github.gleidsonmt.dashboardfx.core.app.interfaces.ActionView;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ActionView;
 import io.github.gleidsonmt.dashboardfx.core.app.interfaces.Context;
+import io.github.gleidsonmt.dashboardfx.core.app.view_wrapper.ResponsiveView;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.AlertType;
 import io.github.gleidsonmt.dashboardfx.core.layout.conteiners.SnackColors;
 import javafx.fxml.FXML;
